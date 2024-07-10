@@ -1,15 +1,34 @@
 {
-  "name": "use-document-visibility",
+  "name": "@artikool5/use-document-visibility",
   "version": "1.0.0",
-  "main": "main.ts",
+  "type": "module",
+  "main": "dist/useDocumentVisibility.cjs.js",
+  "module": "dist/useDocumentVisibility.esm.js",
+  "browser": "dist/useDocumentVisibility.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "."
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "preversion": "npm run build",
+    "build": "rollup -c"
   },
   "author": "Артем Дядюша",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.3.3",
+    "rimraf": "^6.0.0",
+    "rollup": "^4.18.1",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "react": "^18.3.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
