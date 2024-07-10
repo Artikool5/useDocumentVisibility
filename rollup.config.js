@@ -9,17 +9,22 @@ export default [
       name: "use-document-visibility",
       file: pkg.browser,
       format: "umd",
+      globals: {
+        react: "react",
+      },
     },
     plugins: [typescript()],
+    external: ["react"],
   },
 
   // CommonJS (for Node) and ES module (for bundlers) build.
   {
     input: "src/main.ts",
-    plugins: [typescript()],
     output: [
       { file: pkg.main, format: "cjs" },
       { file: pkg.module, format: "es" },
     ],
+    plugins: [typescript()],
+    external: ["react"],
   },
 ];
