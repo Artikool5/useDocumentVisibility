@@ -5,6 +5,7 @@
   "main": "dist/useDocumentVisibility.cjs.js",
   "module": "dist/useDocumentVisibility.esm.js",
   "browser": "dist/useDocumentVisibility.umd.js",
+  "types": "dist/types/main.d.ts",
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "npm run clean",

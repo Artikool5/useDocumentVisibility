@@ -13,7 +13,7 @@ export default [
         react: "react",
       },
     },
-    plugins: [typescript()],
+    plugins: [typescript({ tsconfig: "./tsconfig.json" })],
     external: ["react"],
   },
 
@@ -24,7 +24,7 @@ export default [
       { file: pkg.main, format: "cjs" },
       { file: pkg.module, format: "es" },
     ],
-    plugins: [typescript()],
+    plugins: [typescript({ tsconfig: "./tsconfig.json" })],
     external: ["react"],
   },
 ];
