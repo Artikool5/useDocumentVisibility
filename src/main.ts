@@ -8,7 +8,7 @@ interface DocumentVisibilityReturn {
   onVisibilityChange: (listener: VisibilityListener) => () => void;
 }
 
-const useDocumentVisibility = (): DocumentVisibilityReturn => {
+export const useDocumentVisibility = (): DocumentVisibilityReturn => {
   const [isVisible, setIsVisible] = useState(!document.hidden);
   const [count, setCount] = useState(0);
   const [listeners, setListeners] = useState<VisibilityListener[]>([]);
@@ -45,5 +45,3 @@ const useDocumentVisibility = (): DocumentVisibilityReturn => {
     onVisibilityChange,
   };
 };
-
-export default useDocumentVisibility;
