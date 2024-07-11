@@ -17,7 +17,7 @@ export const useDocumentVisibility = (): DocumentVisibilityReturn => {
   const [listeners, setListeners] = useState<VisibilityListener[]>([]);
 
   const handleVisibilityChange = useCallback(() => {
-    if (isBrowser) return;
+    if (!isBrowser) return;
 
     const newVisibility = !document.hidden;
     setIsVisible(newVisibility);
@@ -37,7 +37,7 @@ export const useDocumentVisibility = (): DocumentVisibilityReturn => {
   }, []);
 
   useEffect(() => {
-    if (isBrowser) return;
+    if (!isBrowser) return;
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
