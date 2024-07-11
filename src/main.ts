@@ -9,18 +9,23 @@ interface DocumentVisibilityReturn {
 }
 
 export const useDocumentVisibility = (): DocumentVisibilityReturn => {
-  const [isVisible, setIsVisible] = useState(!document.hidden);
+  const isBrowser = typeof document !== "undefined";
+  const [isVisible, setIsVisible] = useState(
+    isBrowser ? !document.hidden : true,
+  );
   const [count, setCount] = useState(0);
   const [listeners, setListeners] = useState<VisibilityListener[]>([]);
 
   const handleVisibilityChange = useCallback(() => {
+    if (isBrowser) return;
+
     const newVisibility = !document.hidden;
     setIsVisible(newVisibility);
     if (!newVisibility) {
       setCount((prevCount) => prevCount + 1);
     }
     listeners.forEach((l) => l(newVisibility));
-  }, [listeners]);
+  }, [listeners, isBrowser]);
 
   const onVisibilityChange = useCallback((listener: VisibilityListener) => {
     setListeners((prevListeners) => [...prevListeners, listener]);
@@ -32,12 +37,14 @@ export const useDocumentVisibility = (): DocumentVisibilityReturn => {
   }, []);
 
   useEffect(() => {
+    if (isBrowser) return;
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  });
+  }, [isBrowser, handleVisibilityChange]);
 
   return {
     isVisible,
