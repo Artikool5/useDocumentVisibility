@@ -5,11 +5,10 @@ React hook for easy access to Page Visibility API.
 > [!CAUTION]
 > For learning purposes only!
 
-`useDocumentVisibility()` returns three values:
-
-`isVisible: boolean` - whether tab is visible in browser or not.
-`count: number` - how many times tab has been hidden.
-`onVisibilityChange: (listener: VisibilityListener) => () => void` - function to subscribe to the tab visibility changes.
+ `useDocumentVisibility()` returns three values:
+- `isVisible: boolean` - whether tab is visible in browser or not.
+- `count: number` - how many times tab has been hidden.
+- `onVisibilityChange: (listener: VisibilityListener) => () => void` - function to subscribe to the tab visibility changes.
 
 ## Usage examples
 
